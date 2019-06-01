@@ -1,12 +1,55 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+//import component
+import Header from './Components/header';
+import NewsList from './Components/newslist';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import JSON from './db.json';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// const App = () =>{
+//     // console.log("Data in JSON :: ", JSON);
+//     return (
+//         <div>
+           
+//             <Header/>
+//         </div>
+//     )
+// }
+
+class App extends Component{
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            news:JSON,
+            filteredState: JSON
+
+
+        }
+    }
+
+    filteredNews(keywords){
+        console.log("News from Keyword:", keywords);
+
+        let filteredNews = this.state.news.filter((item)=>{
+            return item.title.indexOf(keywords.toUpperCase()||keywords.toLowerCase()) > -1
+        })
+
+        this.setState({filteredState:filteredNews});
+
+    }
+    render(){
+        return(
+            <div>
+                <Header newsSearch={keywords=>this.filteredNews(keywords)}/>
+                <NewsList news={this.state.filteredState}/>
+            </div>
+        )
+    }
+
+}
+
+ReactDOM.render(<App/>, document.querySelector("#root"));
+
+

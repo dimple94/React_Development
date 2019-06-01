@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+}
+header{
+    
+    background: #db9191;
+    text-align: center;
+    
+   }
+.logo{
+    color: #fff;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+header input{
+    font-size: 25px;
+    margin: 20px 0;
+}
