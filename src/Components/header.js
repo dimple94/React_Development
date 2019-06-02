@@ -22,7 +22,7 @@ class Header extends React.Component{
           <header>
               <div className="logo">LOGO</div>
               <input onChange={this.inputChange.bind(this)}></input>
-              {/* <div>{this.state.keywords}</div> */}
+              <div>{this.state.keywords}</div>
           </header>
       )
   }
