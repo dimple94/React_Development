@@ -33,7 +33,8 @@ class App extends Component{
         console.log("News from Keyword:", keywords);
 
         let filteredNews = this.state.news.filter((item)=>{
-            return item.title.indexOf(keywords.toUpperCase()||keywords.toLowerCase()) > -1
+            return item.title.toLowerCase().indexOf(keywords.toLowerCase()) > -1
+            
         })
 
         this.setState({filteredState:filteredNews});
